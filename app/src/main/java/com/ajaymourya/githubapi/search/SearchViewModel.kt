@@ -1,9 +1,9 @@
 package com.ajaymourya.githubapi.search
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+
 
 class SearchViewModel : ViewModel() {
 
@@ -12,8 +12,13 @@ class SearchViewModel : ViewModel() {
     val navigateToResultPage: LiveData<String>
         get() = _navigateToResultPage
 
-    fun getEditText(userId : String) {
-        Log.e("user"," $userId")
-        _navigateToResultPage.value = userId
+    var isOnline = MutableLiveData<Boolean>()
+
+   fun noInternetConnection(){
+       isOnline.value = false
+   }
+
+    fun getEditText(userId: String) {
+            _navigateToResultPage.value = userId
     }
 }

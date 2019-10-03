@@ -1,8 +1,9 @@
 package com.ajaymourya.githubapi.search
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,11 +40,30 @@ class SearchFragment : Fragment() {
         binding.viewModel = viewModel
 
         viewModel.navigateToResultPage.observe(this, Observer { userId ->
-            val intent = Intent(this.context, ResultActivity::class.java)
-            intent.putExtra("userId", userId)
-            startActivity(intent)
+            if (verifyAvailableNetwork(this.requireContext())) {
+                val intent = Intent(this.context, ResultActivity::class.java)
+                intent.putExtra("userId", userId)
+                startActivity(intent)
+
+                // Clear the connection message
+                binding.internetStatusTextView.text = ""
+
+            } else {
+                viewModel.noInternetConnection()
+            }
+        })
+
+        viewModel.isOnline.observe(this, Observer { isOnline ->
+            binding.internetStatusTextView.text = "No Internet Connection"
         })
 
         return binding.root
+    }
+
+    // Checks user network connection
+    fun verifyAvailableNetwork(context: Context): Boolean {
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val networkInfo = connectivityManager.activeNetworkInfo
+        return networkInfo != null && networkInfo.isConnected
     }
 }
