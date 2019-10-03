@@ -1,9 +1,8 @@
 package com.ajaymourya.githubapi.repository
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModel
 import com.ajaymourya.githubapi.network.GithubApi
 import com.ajaymourya.githubapi.network.Repository
 import kotlinx.coroutines.CoroutineScope
@@ -24,9 +23,9 @@ class RepositoryViewModel : ViewModel() {
     private var viewModelJob = Job()
 
     // the Coroutine runs using the Main (UI) dispatcher
-    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main )
+    private val coroutineScope = CoroutineScope(viewModelJob + Dispatchers.Main)
 
-    lateinit var userId : String
+    lateinit var userId: String
 
     val repos = MutableLiveData<List<Repository>>()
 
@@ -41,12 +40,11 @@ class RepositoryViewModel : ViewModel() {
                 // Await the completion of our Retrofit request
                 var result = getRepos.await()
                 repos.value = result
-            } catch (e: Exception){
+            } catch (e: Exception) {
                 _response.value = "Failure: ${e.message}"
             }
         }
     }
-
 
     //When the [ViewModel] is finished, we cancel our coroutine [viewModelJob],
     // which tells the Retrofit service to stop.

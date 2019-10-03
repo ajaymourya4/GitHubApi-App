@@ -14,11 +14,11 @@ class SearchViewModel : ViewModel() {
 
     var isOnline = MutableLiveData<Boolean>()
 
-   fun noInternetConnection(){
-       isOnline.value = false
-   }
+    fun noInternetConnection() {
+        isOnline.value = false
+    }
 
     fun getEditText(userId: String) {
-            _navigateToResultPage.value = userId
+        _navigateToResultPage.value = userId
     }
 }

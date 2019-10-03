@@ -26,7 +26,6 @@ class RepositoryAdapter(val clickListener: RepoClickListener) : RecyclerView.Ada
         val item = data[position]
 
         holder.bind(item, clickListener)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -41,7 +40,7 @@ class RepositoryAdapter(val clickListener: RepoClickListener) : RecyclerView.Ada
             binding.clickListener = clickListener
             binding.executePendingBindings()
         }
-        
+
         companion object {
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)

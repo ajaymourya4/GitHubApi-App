@@ -10,5 +10,5 @@ import com.ajaymourya.githubapi.network.Repository
 
 @BindingAdapter("repositoryName")
 fun TextView.setRepositoryName(item: Repository) {
-        text = item.name
+    text = item.name
 }

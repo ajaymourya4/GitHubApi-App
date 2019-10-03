@@ -1,7 +1,7 @@
 package com.ajaymourya.githubapi
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.ajaymourya.githubapi.adapters.ViewPagerAdapter
 import com.ajaymourya.githubapi.profile.ProfileFragment
 import com.ajaymourya.githubapi.repository.RepositoryFragment
@@ -15,7 +15,7 @@ class ResultActivity : AppCompatActivity() {
 
         setSupportActionBar(result_toolbar)
 
-        val userId:String = intent.getStringExtra("userId")
+        val userId: String = intent.getStringExtra("userId")
 
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(ProfileFragment(userId), "Profile")
