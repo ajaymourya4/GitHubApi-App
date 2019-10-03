@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+                name="repository"
+                type="com.ajaymourya.githubapi.network.Repository"/>
+
+        <variable
+                name="clickListener"
+                type="com.ajaymourya.githubapi.repository.RepoClickListener"/>
+    </data>
+
+    <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/card_view"
+            android:onClick="@{() -> clickListener.onClick(repository)}"
+            card_view:cardUseCompatPadding="true">
+
+        <TextView
+                android:id="@+id/repo_name"
+                android:textSize="24sp"
+                android:padding="12dp"
+                android:textColor="@android:color/black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:repositoryName="@{repository}"/>
+
+    </androidx.cardview.widget.CardView>
+
+</layout>
