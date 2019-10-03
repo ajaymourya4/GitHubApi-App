@@ -55,9 +55,8 @@ class ProfileViewModel : ViewModel() {
         }
     }
 
-    //When the [ViewModel] is finished, we cancel our coroutine [viewModelJob],
+    //When the ViewModel is finished, we cancel our coroutine viewModelJob,
     // which tells the Retrofit service to stop.
-
     override fun onCleared() {
         super.onCleared()
         viewModelJob.cancel()

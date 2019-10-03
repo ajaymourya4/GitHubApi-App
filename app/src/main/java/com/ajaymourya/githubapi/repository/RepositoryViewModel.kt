@@ -31,23 +31,19 @@ class RepositoryViewModel : ViewModel() {
     val repos = MutableLiveData<List<Repository>>()
 
     init {
-        getGitHubUserInfo()
+        getGitHubUserRepos()
     }
 
-    private fun getGitHubUserInfo() {
+    private fun getGitHubUserRepos() {
         coroutineScope.launch {
             var getRepos = GithubApi.retrofitService.getRepos(userId)
             try {
                 // Await the completion of our Retrofit request
                 var result = getRepos.await()
                 repos.value = result
-                Log.e("result "," $result")
             } catch (e: Exception){
                 _response.value = "Failure: ${e.message}"
-                Log.e("result "," ${e.message}")
-
             }
-
         }
     }
 
