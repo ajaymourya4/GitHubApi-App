@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.ajaymourya.githubapi.databinding.ProfileFragmentBinding
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 
 
@@ -39,7 +40,13 @@ class ProfileFragment(userId: String) : Fragment() {
             Glide
                 .with(this)
                 .load(imgUrl)
-                .apply(RequestOptions().override(300, 300))
+                .apply(
+                    RequestOptions().override(
+                        300,
+                        300
+                    ).diskCacheStrategy(DiskCacheStrategy.NONE)
+                        .skipMemoryCache(true)
+                )
                 .into(binding.statusImage)
         })
 
