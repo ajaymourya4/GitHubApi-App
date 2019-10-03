@@ -2,7 +2,7 @@
 
 ## The app implements MVVM Architecture
 
-## Using Android Architecture Components
+## Uses Android Architecture Components
 
 ## Specs and Libraries used
 - Minimum SDK 19
