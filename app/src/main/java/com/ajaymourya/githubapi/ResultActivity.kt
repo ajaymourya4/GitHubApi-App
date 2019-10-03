@@ -19,7 +19,7 @@ class ResultActivity : AppCompatActivity() {
 
         val adapter = ViewPagerAdapter(supportFragmentManager)
         adapter.addFragment(ProfileFragment(userId), "Profile")
-        adapter.addFragment(RepositoryFragment(userId), "Repository")
+        adapter.addFragment(RepositoryFragment(userId), "Repositories")
         viewPager.adapter = adapter
         tabs.setupWithViewPager(viewPager)
     }
