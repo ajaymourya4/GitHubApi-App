@@ -27,10 +27,8 @@ class RepositoryFragment(userId: String) : Fragment() {
     ): View? {
         val binding = RepositoryFragmentBinding.inflate(inflater)
 
-        // Allows Data Binding to Observe LiveData with the lifecycle of this Fragment
         binding.setLifecycleOwner(this)
 
-        // Giving the binding access to the ProfileViewModel
         binding.viewModel = viewModel
 
         val adapter = RepositoryAdapter(RepoClickListener { repoUrl ->

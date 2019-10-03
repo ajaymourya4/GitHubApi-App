@@ -43,9 +43,10 @@ class ProfileFragment(userId: String) : Fragment() {
                 .load(imgUrl)
                 .apply(
                     RequestOptions().override(
-                        300,
-                        300
-                    ).diskCacheStrategy(DiskCacheStrategy.NONE)
+                        400,
+                        400
+                    ).circleCrop()
+                        .diskCacheStrategy(DiskCacheStrategy.NONE)
                         .skipMemoryCache(true)
                 )
                 .into(binding.statusImage)
